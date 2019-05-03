@@ -17,7 +17,7 @@ public class CoroutineVThreads {
 
     public int ThousArray[] = new int[10000];
 
-    public void start(){
+    public long start(){
         Thread[] ThreadArray = new Thread[10000];
         long StartTime = System.nanoTime();
         for (int i = 0; i < 10000; i++) {
@@ -36,11 +36,18 @@ public class CoroutineVThreads {
         long FinishTime = System.nanoTime();
         long Duration = FinishTime - StartTime;
         System.out.println("Time Elapsed: " + Duration);
+        return Duration;
     }
 
     public static void main(String[] args) {
         CoroutineVThreads t = new CoroutineVThreads();
-        t.start();
+        long One = t.start();
+        long Two = t.start();
+        long Three = t.start();
+        long Four = t.start();
+        long Five = t.start();
+        long Avg = ((One+Two+Three+Four+Five)/5);
+        System.out.println("Average Time: " + Avg);
     }
 
 }
